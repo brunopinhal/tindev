@@ -15,7 +15,7 @@ const DevSchema = new Schema({
         required: true,
     },   
 }, {
-    timestamps: true,
+    timestamps: true, // Cria uma coluna automatica pelo mongoose chamada createdAt e uma updateAt
 });
 
-module.exports = model('Dev', DevSchema);
+module.exports = model('Dev', DevSchema); // exporta o model e recebe o 1st parametro o nome a ser utilizado e o segundo o Schema (tabela)

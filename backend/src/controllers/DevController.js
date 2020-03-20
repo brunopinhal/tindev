@@ -1,11 +1,11 @@
-const axios = require('axios');
+const axios = require('axios'); // Pacote que auxilia fazer requisições em APIs externas
 const Dev = require('../models/Dev');
 
 module.exports = {
     async store(req, res) {
         const { username } = req.body;
 
-        const userExists = await Dev.findOne({ user:username });
+        const userExists = await Dev.findOne({ user:username }); // findOne = método do moongose utilizado para encontrar 1 usuário, assim como forEach
         
         if (userExists) {
             return res.json(userExists);
