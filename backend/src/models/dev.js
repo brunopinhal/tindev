@@ -13,7 +13,15 @@ const DevSchema = new Schema({
     avatar: {
         type: String,
         required: true,
-    },   
+    },
+    likes: [{
+        type: Schema.Types.ObjectId, // relaciona o _id do DB - ObjectId é o formato do mongoDb
+        ref: 'Dev', // referenco ao model Dev
+    }],
+    dislikes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Dev',
+    }],   
 }, {
     timestamps: true, // Cria uma coluna automatica pelo mongoose chamada createdAt e uma updateAt
 });

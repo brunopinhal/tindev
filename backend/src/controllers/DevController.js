@@ -1,5 +1,5 @@
 const axios = require('axios'); // Pacote que auxilia fazer requisições em APIs externas
-const Dev = require('../models/Dev');
+const Dev = require('../models/dev');
 
 module.exports = {
     async store(req, res) {
