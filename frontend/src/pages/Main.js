@@ -1,22 +1,37 @@
-import React, { useEffect } from  'react';
+import React, { useEffect, useState } from  'react';
 import './Main.css';
+
+import api from '../services/api';
 
 import logo from '../assets/logo.svg';
 import dislike from '../assets/dislike.svg';
 import like from '../assets/like.svg';
 
+export default function Main({ match }) {
+	const [users, setUsers] = useState([]);
 
+	useEffect(() => {
+		async function loadUsers(){
+			const response = await api.get('/devs', {
+				headers: {
+					user: match.params.id,
+				}
+			});
+			setUsers(response.data);
+		}
+		loadUsers();
+	}, [match.params.id]);
 
-export default function Main({ Match }) {
     return(
 			<div className="main-container">
 				<img src={logo} alt="Tindev"/>
 				<ul>
-					<li>
-						<img src="https://avatars2.githubusercontent.com/u/2254731?v=4" alt=""/>
+					{users.map(user => (
+					<li key={user._id}>
+						<img src={user.avatar} alt={user.name}/>
 						<footer>
-							<strong>Diego Fernandes</strong>
-							<p>CTO na @Rocketseat. Apaixonado pelas melhores tecnologias de desenvolvimento web e mobile.</p>
+							<strong>{user.name}</strong>
+							<p>{user.bio}</p>
 						</footer>
 						<div className="buttons">
 							<button type="submit">
@@ -27,51 +42,7 @@ export default function Main({ Match }) {
 							</button>
 						</div>
 					</li>
-					<li>
-						<img src="https://avatars2.githubusercontent.com/u/2254731?v=4" alt=""/>
-						<footer>
-							<strong>Diego Fernandes</strong>
-							<p>CTO na @Rocketseat. Apaixonado pelas melhores tecnologias de desenvolvimento web e mobile.</p>
-						</footer>
-						<div className="buttons">
-							<button type="submit">
-								<img src={dislike} alt="dislike"/>
-							</button>
-							<button type="submit">
-								<img src={like} alt="like"/>
-							</button>
-						</div>
-					</li>
-					<li>
-						<img src="https://avatars2.githubusercontent.com/u/2254731?v=4" alt=""/>
-						<footer>
-							<strong>Diego Fernandes</strong>
-							<p>CTO na @Rocketseat. Apaixonado pelas melhores tecnologias de desenvolvimento web e mobile.</p>
-						</footer>
-						<div className="buttons">
-							<button type="submit">
-								<img src={dislike} alt="dislike"/>
-							</button>
-							<button type="submit">
-								<img src={like} alt="like"/>
-							</button>
-						</div>
-					</li>
-					<li>
-						<img src="https://avatars2.githubusercontent.com/u/2254731?v=4" alt=""/>
-						<footer>
-							<strong>Diego Fernandes</strong>
-							<p>CTO na @Rocketseat. Apaixonado pelas melhores tecnologias de desenvolvimento web e mobile.</p>
-						</footer>
-						<div className="buttons">
-							<button type="submit">
-								<img src={dislike} alt="dislike"/>
-							</button>
-							<button type="submit">
-								<img src={like} alt="like"/>
-							</button>
-						</div>
-					</li>
+					))}
 				</ul>
 			</div>
     );
