@@ -12,6 +12,8 @@ Server = NodeJs + MongoDB</br>
 Front-End = React</br>
 Mobile = React Native **(work in progress)**
 
+Desenvolvido com base na Semana Omnistack oferecida pela RocketSeat.
+
 ## Contato ##
 
 Você pode me contatar acessando meu perfil no Linkedin [clicando aqui](https://www.linkedin.com/in/brunopinhal/).
