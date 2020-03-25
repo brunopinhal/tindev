@@ -10,7 +10,6 @@ Tindev é uma aplicação baseada no app Tinder, para conectar desenvolvedores d
 
 Server = NodeJs + MongoDB</br>
 Front-End = React</br>
-Mobile = React Native **(work in progress)**
 
 Desenvolvido com base na Semana Omnistack oferecida pela RocketSeat.
 
